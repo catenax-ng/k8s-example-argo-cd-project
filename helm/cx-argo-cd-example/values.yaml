@@ -5,30 +5,27 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ghcr.io/catenax-ng/k8s-example-argo-cd-project
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "main"
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+nameOverride: "cx-argo-cd-example"
+fullnameOverride: "cx-argo-cd-example"
 
 podAnnotations: {}
 
-podSecurityContext: {}
+# @url: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+podSecurityContext:
+  allowPrivilegeEscalation: false
   # fsGroup: 2000
 
-securityContext: {}
+# @url: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 3000
   # capabilities:
   #   drop:
   #   - ALL
@@ -38,11 +35,11 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: false
-  className: ""
+  className: "nginx"
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
@@ -56,7 +53,14 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+# @url: https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits
+resources: 
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -72,4 +76,31 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity: {}
+# @url: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+affinity:
+  podAntiAffinity: 
+    preferredDuringSchedulingIgnoredDuringExecution: 
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name 
+            operator: DoesNotExist 
+            values:
+            - cx-argo-cd-example
+        topologyKey: kubernetes.io/hostname
+# @url: https://github.com/helm/charts/blob/master/stable/nginx-ingress/values.yaml#L210
+livenessProbe:
+  failureThreshold: 3
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  port: 10254
+readinessProbe:
+  failureThreshold: 3
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  port: 10254
