@@ -44,8 +44,7 @@ autoscaling:
 ingress:
   enabled: true
   className: "nginx"
-  annotations:
-    kubernetes.io/ingress.class: nginx
+  annotations:    
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
   hosts:
     - host: home.int.demo.catena-x.net
