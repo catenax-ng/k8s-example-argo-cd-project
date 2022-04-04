@@ -17,12 +17,12 @@ fullnameOverride: "cx-argo-cd-example"
 podAnnotations: {}
 
 # @url: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
-podSecurityContext:
-  allowPrivilegeEscalation: false
+podSecurityContext: {}
   # fsGroup: 2000
 
 # @url: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
 securityContext:
+  allowPrivilegeEscalation: false
   runAsNonRoot: true
   runAsUser: 1000
   runAsGroup: 3000
