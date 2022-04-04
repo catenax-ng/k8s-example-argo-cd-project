@@ -85,6 +85,7 @@ tolerations: []
 
 # @url: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 affinity: {}
+#Deployment.apps "cx-argo-cd-example" is invalid: spec.template.spec.affinity.podAntiAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].podAffinityTerm.labelSelector.matchExpressions[0].values: Forbidden: may not be specified when `operator` is 'Exists' or 'DoesNotExist'
   # podAntiAffinity: 
   #   preferredDuringSchedulingIgnoredDuringExecution: 
   #   - weight: 100
@@ -92,22 +93,22 @@ affinity: {}
   #       labelSelector:
   #         matchExpressions:
   #         - key: app.kubernetes.io/name 
-  #           operator: DoesNotExist 
-  #           values:
-  #           - cx-argo-cd-example
+  #           operator: DoesNotExist           
   #       topologyKey: kubernetes.io/hostname
 # @url: https://github.com/helm/charts/blob/master/stable/nginx-ingress/values.yaml#L210
 livenessProbe:
+  path: "/"
   failureThreshold: 3
   initialDelaySeconds: 10
   periodSeconds: 10
   successThreshold: 1
   timeoutSeconds: 1
-  port: 10254
+  port: 8080
 readinessProbe:
+  path: "/"
   failureThreshold: 3
   initialDelaySeconds: 10
   periodSeconds: 10
   successThreshold: 1
   timeoutSeconds: 1
-  port: 10254
+  port: 8080

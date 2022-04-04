@@ -41,7 +41,7 @@ spec:
           # @url: https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: {{ .Values.livenessProbe.path }}
               port: {{ .Values.livenessProbe.port }}
               scheme: HTTP
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
@@ -52,7 +52,7 @@ spec:
           # @url: https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes
           readinessProbe:
             httpGet:
-              path: /healthz
+              path: {{ .Values.readinessProbe.path }}
               port: {{ .Values.readinessProbe.port }}
               scheme: HTTP
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
