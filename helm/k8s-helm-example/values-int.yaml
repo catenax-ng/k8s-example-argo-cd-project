@@ -15,4 +15,4 @@ ingress:
   #      - home.int.demo.catena-x.net
 
   image:
-    repository: ghcr.io/catenax-ng/k8s-example-argo-cd-project
+    repository: ghcr.io/catenax-ng/k8s-helm-example

@@ -1,6 +1,7 @@
 apiVersion: v2
-name: cx-argo-cd-example
+name: k8s-helm-example
 description: A Helm chart for Kubernetes for Catena-X
+
 
 # Application charts are a collection of templates that can be packaged into versioned archives
 # to be deployed.
