@@ -40,8 +40,8 @@ ingress:
   enabled: true
   className: "nginx"
   annotations:    
-    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    #nginx.ingress.kubernetes.io/backend-protocol: HTTPS
   hosts:
     - host: "home.int.demo.catena-x.net"
       paths:
