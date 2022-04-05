@@ -25,10 +25,6 @@ securityContext:
   runAsNonRoot: true
   runAsUser: 1000
   runAsGroup: 3000
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
 
 service:
   type: ClusterIP
@@ -38,8 +34,6 @@ autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 2
-  targetCPUUtilizationPercentage: 50
-  targetMemoryUtilizationPercentage: 50
   
 ingress:
   enabled: true
