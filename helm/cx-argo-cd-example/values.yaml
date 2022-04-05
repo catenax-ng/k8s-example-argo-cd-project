@@ -18,7 +18,8 @@ podAnnotations: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
-
+  
+# Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
 securityContext:
   allowPrivilegeEscalation: false
@@ -42,19 +43,20 @@ ingress:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
   hosts:
-    - host: home.int.demo.catena-x.net
+    - host: "home.int.demo.catena-x.net"
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls: []
-  #  - secretName: chart-example-tls
+  #  - secretName: www-tls
   #    hosts:
   #      - home.int.demo.catena-x.net
 
+# Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits
 resources: 
   limits:
-    cpu: 100m
+    cpu: 500m
     memory: 128Mi
   requests:
     cpu: 100m
@@ -74,6 +76,7 @@ nodeSelector: {}
 
 tolerations: []
 
+# Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 affinity:
   podAntiAffinity: 
@@ -85,6 +88,8 @@ affinity:
           - key: app.kubernetes.io/name 
             operator: DoesNotExist           
         topologyKey: kubernetes.io/hostname
+
+# Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://github.com/helm/charts/blob/master/stable/nginx-ingress/values.yaml#L210
 livenessProbe:
   path: "/"
