@@ -44,3 +44,29 @@ Following steps are executed:
 
 The [Helm Chart](http://helm.sh/) *[k8s-helm-example](chart/k8s-helm-example/)* is meant to be monitored by [Argo CD](https://argo-cd.readthedocs.io/en/stable/) and deployed to a [K8s cluster](http://kubernetes.io/).
 It follows [Catena-X Helm Best Practices](https://catenax-ng.github.io/docs/kubernetes-basics/helm).
+
+## Argo CD
+
+Within [Catena-X NG](https://github.com/catenax-ng), [Argo CD](https://argo-cd.readthedocs.io/en/stable/) is used to deployed Cloud Applications to a [K8s cluster](http://kubernetes.io/).
+
+In order for to for [Argo CD](https://argo-cd.readthedocs.io/en/stable/) to manage this repository, the following [Argo CD App](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications) must be created:
+
+```yaml
+project: default
+source:
+  repoURL: 'https://github.com/catenax-ng/k8s-helm-example.git'
+  path: chart/k8s-helm-example
+  targetRevision: main
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: k8s-helm-example
+syncPolicy:
+  automated: {}
+  syncOptions:
+    - CreateNamespace=true
+    - Replace=true
+```
+
+This example has been created on [Hotel Budapest Argo CD](https://argo.demo.catena-x.net/applications).
+
+![](docs/images/argo-cd-app.png)
