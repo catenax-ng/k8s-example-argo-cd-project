@@ -29,5 +29,5 @@ Following steps are executed:
 5. Signs published [Docker](https://www.docker.com) image
 
 ## Helm Chart
-The [Helm Chart](http://helm.sh/) *[k8s-helm-example](helm/k8s-helm-example/)* is meant to be monitored by [Argo CD](https://argo-cd.readthedocs.io/en/stable/) and deployed to a [K8s cluster](http://kubernetes.io/).
+The [Helm Chart](http://helm.sh/) *[k8s-helm-example](chart/k8s-helm-example/)* is meant to be monitored by [Argo CD](https://argo-cd.readthedocs.io/en/stable/) and deployed to a [K8s cluster](http://kubernetes.io/).
 It follows [Catena-X Helm Best Practices](https://catenax-ng.github.io/docs/kubernetes-basics/helm).
