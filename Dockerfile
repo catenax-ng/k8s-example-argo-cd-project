@@ -1,2 +1,3 @@
 FROM nginxinc/nginx-unprivileged:latest
-COPY ./html/index.html /usr/share/nginx/html/index.html
+COPY ./html/* /usr/share/nginx/html/
+COPY ./docker/default.conf /etc/nginx/conf.d/default.conf
