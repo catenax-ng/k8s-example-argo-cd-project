@@ -101,3 +101,8 @@ readinessProbe:
   periodSeconds: 10
   successThreshold: 1
   timeoutSeconds: 1
+
+avp:
+  helm:
+    secret: <path:product-team-example/data/hello#foo>
+    name: avp-example-secret
