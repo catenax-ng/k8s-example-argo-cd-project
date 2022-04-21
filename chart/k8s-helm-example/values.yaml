@@ -104,5 +104,5 @@ readinessProbe:
 
 avp:
   helm:
-    secret: <path:product-team-example/data/hello#foo>
-    name: avp-example-secret
+    secretAnnotation: "product-team-example/data/hello"
+    secretPath: <path:product-team-example/data/hello#foo>
