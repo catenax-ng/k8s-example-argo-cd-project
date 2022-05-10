@@ -1,10 +1,140 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="utf-8">
-  <title>Custom Docker Nginx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Catena-X Cluster Welcome Page">
+  <meta name="author" content="">
+
+  <title>Catena-X INT platform stack</title> <!--add dynamic DEV INT PROD change using ConfigMap (simple solution: https://stackoverflow.com/a/59771742) -->
+
+  <!-- Bootstrap core CSS -->
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link data-rh="true" rel="icon" href="https://catenax-ng.github.io/img/favicon.ico">
+  <!-- Custom styles for this template -->
+  <link href="css/heroic-features.css" rel="stylesheet">
+
 </head>
+
 <body>
-  <h2>Hello from my custom changed nginx container</h2>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div><img class="navbar-brand" src="https://catenax-ng.github.io/img/logo.svg" width="36" height="36" viewBox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false" alt="Catena-X Logo" />Catena-X</div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://catenax-ng.github.io/docs/intro">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://catenax-ng.github.io/blog">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/catenax-ng/catenax-ng.github.io">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">Welcome to Catena-X <br /> <b>INT</b> Cluster!</h1> <!--add dynamic DEV INT PROD change using ConfigMap (simple solution: https://stackoverflow.com/a/59771742) -->
+      <p class="lead">In this cluster you can test your products and services provided by Catena-X DevSecOps team(for Catena-X members only). Here you can find the services provided and their addresses.</p>
+      <a href="https://argo.int.demo.catena-x.net/" class="btn btn-primary btn-lg">Jump directly to ArgoCD</a>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="assets/img/vaultproject-ar21.svg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Secret Management</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://vault.vault.demo.catena-x.net/" class="btn btn-primary" target="_blank">To the Vault</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="assets/img/grafana-ar21.svg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Tracing - Monitoring</h4>
+            <p class="card-text">Icons, so many beautiful icons. WoW!</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary" target="_blank">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="assets/img/sonarcloud-wordmark-1.svg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Code Quality & Security</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary" target="_blank">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="assets/img/microsoft-teams-logo.svg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">DevSecOps Support</h4>
+            <p class="card-text">We have a 2h Office Hour every Friday. Feel free to join and ask your questions directly there.
+
+              You can also join us on Catena-X MS Teams channel below</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://teams.microsoft.com/l/channel/19%3a9a3c4a05a3514d07b973c13e7b468709%40thread.tacv2/CX%2520-%2520CoP%2520DevSecOps?groupId=17b1a2dc-67fb-4a49-a2ed-dd1344321439&tenantId=1ad22c6d-2f08-4f05-a0ba-e17f6ce88380" class="btn btn-primary" target="_blank">DevSecOps @ MS Teams</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; 2022 Catena-X DevSecOps - funded by <a href="https://www.bmwk.de/Navigation/EN/Home/home.html">BMWK</a></p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="assets/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
