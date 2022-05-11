@@ -10,8 +10,8 @@
 
   <title>Catena-X INT platform stack</title> <!--add dynamic DEV INT PROD change using ConfigMap (simple solution: https://stackoverflow.com/a/59771742) -->
 
-  <!-- Bootstrap core CSS -->
-  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS over CDN with SRI check -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous">
   <link data-rh="true" rel="icon" href="https://catenax-ng.github.io/img/favicon.ico">
   <!-- Custom styles for this template -->
   <link href="css/heroic-features.css" rel="stylesheet">
@@ -131,9 +131,10 @@
     <!-- /.container -->
   </footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="assets/jquery/jquery-3.6.0.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap, popper and jquery over CDN with SRI check -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/cjs/popper.js" integrity="sha256-AOt8NBezBzuBUiJRPeJ3FKVWAG/o6kppBMzhIYXgdg8=" crossorigin="anonymous"></script>
 
 </body>
 
