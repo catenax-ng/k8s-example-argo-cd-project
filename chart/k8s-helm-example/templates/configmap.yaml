@@ -5,5 +5,5 @@ metadata:
 data:
   config.json: |-
     {
-      "serviceEnvironment": "{{ .Values.service.environment }}"
+      "serviceEnvironment": {{ .Values.service.environment | quote }}
     }

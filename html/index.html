@@ -135,10 +135,10 @@
   <!-- Load dynamic configuration json and overwrite html values -->
   <script type="text/javascript">
     $(document).ready(function() {
-      var CONFIG = require('./config.json');
-      var serviceEnvironment = CONFIG.serviceEnvironment;
-      $("#htmlEnvironment").html(serviceEnvironment);
-      document.title = 'serviceEnvironment';
+      $.getJSON('config.json', function(data) {
+        $("#htmlEnvironment").html(data.serviceEnvironment);
+        document.title = data.serviceEnvironment;
+      });
     });
   </script>
   <!-- Bootstrap (bundled with popper) and jquery over CDN with SRI check -->
