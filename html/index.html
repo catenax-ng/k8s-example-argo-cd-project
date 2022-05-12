@@ -137,7 +137,7 @@
     $(document).ready(function() {
       $.getJSON('config.json', function(data) {
         $("#htmlEnvironment").html(data.serviceEnvironment);
-        document.title = data.serviceEnvironment;
+        document.title = 'Catena-X ' + data.serviceEnvironment + ' platform stack';
       });
     });
   </script>
