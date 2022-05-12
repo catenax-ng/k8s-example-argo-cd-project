@@ -3,9 +3,7 @@ name: Build Pipeline
 on:
   push:
     branches:
-      - 'main'
-  pull_request:
-    branches:    
+      - 'main'   
       - 'feature/**'
 env:
   # Use docker.io for Docker Hub if empty
