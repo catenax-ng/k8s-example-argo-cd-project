@@ -18,3 +18,4 @@ ingress:
     repository: ghcr.io/catenax-ng/k8s-helm-example
 service:
   environment: "INT"
+  
