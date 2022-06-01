@@ -55,7 +55,7 @@
     <header class="jumbotron my-4" style="background-color: rgb(255, 166, 0);">
       <h1 class="display-3">Welcome to Catena-X <br /> <b id="htmlEnvironment">INT</b> Cluster!</h1>
       <p class="lead">In this cluster you can test your products and services provided by Catena-X DevSecOps team(for Catena-X members only). Here you can find the services provided and their addresses.</p>
-      <a href="https://argo.int.demo.catena-x.net/" class="btn btn-primary btn-lg">Jump directly to ArgoCD</a>
+      <a id="argoCDLink" href="https://argo.int.demo.catena-x.net/" class="btn btn-primary btn-lg">Jump directly to ArgoCD</a>
     </header>
 
     <!-- Page Features -->
@@ -69,7 +69,7 @@
             <p class="card-text">Vault secures, stores, and tightly controls access to tokens, passwords, certificates, API keys, and other secrets in modern computing.</p>
           </div>
           <div class="card-footer">
-            <a href="https://vault.vault.demo.catena-x.net/" class="btn btn-primary" target="_blank">To the Vault</a>
+            <a href="https://vault.demo.catena-x.net/" class="btn btn-primary" target="_blank">To the Vault</a>
           </div>
         </div>
       </div>
@@ -142,10 +142,11 @@
       $.getJSON('config.json', function(data) {
         $("#htmlEnvironment").html(data.serviceEnvironment);
         document.title = 'Catena-X ' + data.serviceEnvironment + ' platform stack';
+        $("#argoCDLink").href("https://argo." + data.serviceEnvironment + ".demo.catena-x.net/");
       });
     });
   </script>
-  
+
 </body>
 
 </html>
