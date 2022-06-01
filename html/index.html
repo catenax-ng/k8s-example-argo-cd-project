@@ -142,7 +142,7 @@
       $.getJSON('config.json', function(data) {
         $("#htmlEnvironment").html(data.serviceEnvironment);
         document.title = 'Catena-X ' + data.serviceEnvironment + ' platform stack';
-        $("#argoCDLink").href("https://argo." + data.serviceEnvironment + ".demo.catena-x.net/");
+        $("#argoCDLink").attr("href", "https://argo." + data.serviceEnvironment + ".demo.catena-x.net/");
       });
     });
   </script>
