@@ -1,6 +1,9 @@
 ingress:
   hosts:
     - host: home.dev.demo.catena-x.net
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
   tls:
     - secretName: tls-secret
       hosts:
