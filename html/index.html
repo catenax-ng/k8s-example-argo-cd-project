@@ -53,9 +53,9 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4" style="background-color: rgb(255, 166, 0);">
-      <h1 class="display-3">Welcome to Catena-X <br /> <b>INT</b> Cluster!</h1> <!--add dynamic DEV INT PROD change using ConfigMap (simple solution: https://stackoverflow.com/a/59771742) -->
+      <h1 class="display-3">Welcome to Catena-X <br /> <b id="htmlEnvironment">INT</b> Cluster!</h1>
       <p class="lead">In this cluster you can test your products and services provided by Catena-X DevSecOps team(for Catena-X members only). Here you can find the services provided and their addresses.</p>
-      <a href="https://argo.int.demo.catena-x.net/" class="btn btn-primary btn-lg">Jump directly to ArgoCD</a>
+      <a id="argoCDLink" href="https://argo.int.demo.catena-x.net/" class="btn btn-primary btn-lg">Jump directly to ArgoCD</a>
     </header>
 
     <!-- Page Features -->
@@ -69,7 +69,7 @@
             <p class="card-text">Vault secures, stores, and tightly controls access to tokens, passwords, certificates, API keys, and other secrets in modern computing.</p>
           </div>
           <div class="card-footer">
-            <a href="https://vault.vault.demo.catena-x.net/" class="btn btn-primary" target="_blank">To the Vault</a>
+            <a href="https://vault.demo.catena-x.net/" class="btn btn-primary" target="_blank">To the Vault</a>
           </div>
         </div>
       </div>
@@ -135,6 +135,17 @@
   <!-- Bootstrap (bundled with popper) and jquery over CDN with SRI check -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fzFFyH01cBVPYzl16KT40wqjhgPtq6FFUB6ckN2+GGw=" crossorigin="anonymous"></script>
+
+  <!-- Load dynamic configuration json and overwrite html values -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.getJSON('config.json', function(data) {
+        $("#htmlEnvironment").html(data.serviceEnvironment);
+        document.title = 'Catena-X ' + data.serviceEnvironment + ' platform stack';
+        $("#argoCDLink").attr("href", "https://argo." + data.serviceEnvironment + ".demo.catena-x.net/");
+      });
+    });
+  </script>
 
 </body>
 
