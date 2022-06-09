@@ -1,9 +1,4 @@
 ingress:
-  enabled: true
-  className: "nginx"
-  annotations:    
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
   hosts:
     - host: home.dev.demo.catena-x.net
       paths:
@@ -13,9 +8,6 @@ ingress:
     - secretName: tls-secret
       hosts:
         - home.dev.demo.catena-x.net
-
-  image:
-    repository: ghcr.io/catenax-ng/k8s-helm-example
 service:
   environment: "DEV"
   
