@@ -13,7 +13,7 @@ This application provides a simple landing page for [K8s cluster](http://kuberne
 |:---------------------|----------------------------------------------------|
 | [.github/workflows](.github/workflows/) | Stores all GitHub relevant items like GitHub actions.  |
 | [docker/*](docker/)  | Stores assets which are stored in docker image after build. |
-| [helm/*](helm/)  | Stores Helm Chart(s) which are used by Argo-CD to deploy this application on a K8s cluster.  |
+| [charts/*](helm/)  | Stores Helm Chart(s) which are used by Argo-CD to deploy this application on a K8s cluster.  |
 | [html/*](html/)  | Stores static HTML assets which are stored in docker image after build. |
 
 ## Application Docker Container Image
