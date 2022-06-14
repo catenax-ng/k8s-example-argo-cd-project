@@ -80,10 +80,9 @@
           <div class="card-body">
             <h4 class="card-title">Tracing - Monitoring</h4>
             <p class="card-text">Grafana is an open source solution for running data analytics, pulling up metrics & to monitor apps with the help of customizable dashboards.</p>
-            <p class="card-text"><small class="text-muted">Coming soon...</small></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary disabled" target="_blank">To Grafana Dashboard</a>
+            <a id="grafanaLink" href="#" class="btn btn-primary" target="_blank">To Grafana Dashboard</a>
           </div>
         </div>
       </div>
@@ -143,6 +142,7 @@
         $("#htmlEnvironment").html(data.serviceEnvironment);
         document.title = 'Catena-X ' + data.serviceEnvironment + ' platform stack';
         $("#argoCDLink").attr("href", "https://argo." + data.serviceEnvironment + ".demo.catena-x.net/");
+        $("#grafanaLink").attr("href", "https://grafana." + data.serviceEnvironment + ".demo.catena-x.net/");
       });
     });
   </script>
