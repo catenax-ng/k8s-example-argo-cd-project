@@ -68,10 +68,16 @@ spec:
               readOnly: true
               mountPath: "/usr/share/nginx/html/config.json"
               subPath: "config.json"
+            - name: pv-tmp-demo
+              readOnly: false
+              mountPath: /tmp/demo
       volumes:
         - name: config-frontend-volume
           configMap:
             name: config-frontend
+        - name: pv-tmp-demo
+          persistentVolumeClaim:
+            claimName: pvc-persistent-tmp-demo
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
