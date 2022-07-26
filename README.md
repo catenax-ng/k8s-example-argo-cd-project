@@ -67,6 +67,6 @@ syncPolicy:
     - Replace=true
 ```
 
-This example has been created on [Hotel Budapest Argo CD](https://argo.demo.catena-x.net/applications).
+This example has been created on [Hotel Budapest Argo CD](https://argo.int.demo.catena-x.net/applications).
 
 ![](docs/images/argo-cd-app.png)
