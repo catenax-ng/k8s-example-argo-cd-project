@@ -3,6 +3,16 @@ entries:
   k8s-helm-example:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2022-08-31T14:45:57.491086902Z"
+    description: A Helm chart for Kubernetes for Catena-X
+    digest: 20ca62fc5a073e41ba9d06b7b09a50cdcd4935b6034fc36adbf2d3d9164a1fea
+    name: k8s-helm-example
+    type: application
+    urls:
+    - https://github.com/catenax-ng/k8s-helm-example/releases/download/k8s-helm-example-0.1.2/k8s-helm-example-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2022-06-10T09:20:03.730866089Z"
     description: A Helm chart for Kubernetes for Catena-X
     digest: 461d585842b28b0ad43483f8e6e621b92c3610c9344277f9bd6a062780e4a3db
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/catenax-ng/k8s-helm-example/releases/download/k8s-helm-example-0.1.1/k8s-helm-example-0.1.1.tgz
     version: 0.1.1
-generated: "2022-06-10T09:20:03.73087429Z"
+generated: "2022-08-31T14:45:57.491104602Z"
