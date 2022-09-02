@@ -51,6 +51,10 @@ as cluster entry point and default backend. Therefore, we are leveraging nginx w
 This repository contains example workflows, that show some common tasks that you will need to take care of in your
 day-to-day work.
 
+## Check for conventional commits on pull request 
+
+When you create a pull request for this repository, a GitHub action will check if conventional commits were used. You should always check your commits as described [above](#conventional-commits-via-pre-commit-hook), which uses the same definitions. If you want to use this action, copy the file `.github/workflows/commit-lint.yaml` and place it in your repository's `.github/workflows/` folder. 
+
 ## Docker build
 
 A key step to get your application released and deployable, is to build a docker image for it. The necessary steps
