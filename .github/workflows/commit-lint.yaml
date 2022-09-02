@@ -1,20 +1,11 @@
-<<<<<<< HEAD
 name: check for conventional commits
-=======
-name: commit linting
->>>>>>> 689e4dc496672d6ec07ec123b2fd085c48a553dd
 
 on: 
   pull_request:
 
 jobs:
-<<<<<<< HEAD
   commit-lint-on-pr:
     name: check linting
-=======
-  commit-lint:
-    name: commit linting
->>>>>>> 689e4dc496672d6ec07ec123b2fd085c48a553dd
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
