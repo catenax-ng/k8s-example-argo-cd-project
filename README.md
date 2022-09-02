@@ -4,6 +4,33 @@ This [repository](https://github.com/catenax-ng/k8s-example-argo-cd-project) is 
 [Docker](https://www.docker.com) image and embed it as an [Argo CD](https://argo-cd.readthedocs.io/en/stable/) friendly
 [Helm Chart](http://helm.sh/) for [Catena-X NG](https://github.com/catenax-ng).
 
+# Working with this repository
+
+## Conventional commits via pre-commit hook
+
+Conventional commits are prepared for this repository but require manual steps after you have cloned this repository 
+locally to your computer.
+
+**Prerequisites to use conventional commits:**
+
+- Node.js installed on your computer
+- Execute `npm install` in repository root directory
+
+After these steps you will get errors like this, when disrespecting conventional committing:
+
+````shell
+[feature/pre_commit_hook_conventional_commit][~/projects/cat-x/repos/k8s-helm-example]$ git commit -m "feat: Lalala"
+⧗   input: feat: Lalala
+✖   subject must not be sentence-case, start-case, pascal-case, upper-case [subject-case]
+
+✖   found 1 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+husky - commit-msg hook exited with code 1 (error)
+````
+
+For further information about conventional committing, please refer to [https://www.conventionalcommits.org/en/v1.0.0/#summary](https://www.conventionalcommits.org/en/v1.0.0/#summary).
+
 ## Example Application
 
 The application we build for this example purpose provides a simple landing page for [K8s cluster](http://kubernetes.io/) 
@@ -17,6 +44,7 @@ as cluster entry point and default backend. Therefore, we are leveraging nginx w
 | [docker/*](docker/)                     | Stores assets which are stored in docker image after build.                                 |
 | [charts/*](charts/)                     | Stores Helm Chart(s) which are used by Argo-CD to deploy this application on a K8s cluster. |
 | [html/*](html/)                         | Stores static HTML assets which are stored in docker image after build.                     |
+
 
 # GitHub Workflows
 
@@ -36,11 +64,10 @@ are executed in a docker [build pipeline](.github/workflows/docker-build.yaml). 
 
 ## IaaS security scans with KICS
 
-The [iaas-security-scan](.github/workflows/iaas-security-scan.yaml) workflow is running a static code analysis of
-IaaS. Our tool of choice for that is [KICS](https://kics.io/).
-For repositories in our catenax-ng GitHub organization, it is mandatory to perform this kind of check, to comply
-with our quality gates.
-Findings will be present in the _Security_ tab of your repository.
+The [iaas-security-scan](.github/workflows/iaas-security-scan.yaml) workflow is running a static code analysis of IaaS. 
+Our tool of choice for that is [KICS](https://kics.io/). For repositories in our catenax-ng GitHub organization, it is 
+mandatory to perform this kind of check, to comply with our quality gates. Findings will be present in the _Security_ 
+tab of your repository.
 
 You can use the linked workflow 'as-is'. It is configured to run on changes the `main` branch and on a cron schedule.
 
@@ -51,20 +78,19 @@ You can find out more about IaaS security scans with KICS
 
 The [security-vulnerability-scans](.github/workflows/security-vulnerability-scans.yaml) workflow is scanning your 
 sources and your docker image for security vulnerabilities. This is done two jobs, that use
-[trivy-action](https://github.com/aquasecurity/trivy-action).
-For repositories in our catenax-ng GitHub organization, it is mandatory to perform this kind of check, to comply
-with our quality gates.
-Findings will be present in the _Security_ tab of your repository.
+[trivy-action](https://github.com/aquasecurity/trivy-action). For repositories in our catenax-ng GitHub organization, 
+it is mandatory to perform this kind of check, to comply with our quality gates. Findings will be present in the 
+_Security_ tab of your repository.
 
-To use this action, you need to adjust it slightly to your specific repository. 
-The 'analyze config' job can be used 'as-is', since it is working on the repository, that was checked out at the beginning
-of the job.
-For the second job, which does the container image scanning, you need to adjust the `image-ref` property to the image name
-you are using for your container images. If you are building multiple images, you would need to add additional steps.
-You should also adjust the name of the container scanning job to your needs.
+To use this action, you need to adjust it slightly to your specific repository. The 'analyze config' job can be used 
+'as-is', since it is working on the repository, that was checked out at the beginning of the job. For the second job, 
+which does the container image scanning, you need to adjust the `image-ref` property to the image name you are using 
+for your container images. If you are building multiple images, you would need to add additional steps. You should also 
+adjust the name of the container scanning job to your needs.
 
 You can find more information about security vulnerability scans with trivy
 [in our public documentation](https://catenax-ng.github.io/docs/security/how-to-integrate-trivy)
+
 
 ## Helm linting and testing
 
@@ -81,30 +107,29 @@ of your chart.
 
 ## Helm chart release
 
-The [Release Charts](.github/workflows/helm-chart-release.yaml) workflow is used to package and release the helm charts defined
-in the [/charts](charts) directory. It is using the [chart-releaser-action](https://github.com/helm/chart-releaser-action)
+The [Release Charts](.github/workflows/helm-chart-release.yaml) workflow is used to package and release the helm charts 
+defined in the [/charts](charts) directory. It is using the [chart-releaser-action](https://github.com/helm/chart-releaser-action)
 to: 
 
 1. Package all the charts in the [/charts](charts) folder
 2. Creating a GitHub release with the packaged charts
 3. Updating the [index.yaml](https://github.com/catenax-ng/k8s-helm-example/blob/gh-pages/index.yaml) in the `gh-pages` branch.
-    This file is needed to use GitHub pages as download source for the released chart.
+   This file is needed to use GitHub pages as download source for the released chart.
 
-You can use the workflow 'as-is', if you placed your charts in the [/charts](charts) directory and have a branch called `gh-pages`.
-You can read more about how to release your helm chart [in our public documentation](https://catenax-ng.github.io/docs/guides/how-to-release-a-helm-chart)
+You can use the workflow 'as-is', if you placed your charts in the [/charts](charts) directory and have a branch called 
+`gh-pages`. You can read more about how to release your helm chart [in our public documentation](https://catenax-ng.github.io/docs/guides/how-to-release-a-helm-chart)
 
 # Helm Chart
 
-For Catena-X open-source applications, we decided to use [Helm](http://helm.sh/) as package manager for
-releases and deployments. 
-This example repository contains a chart named *[k8s-helm-example](charts/k8s-helm-example)* to describe the deployment
-of our example application. We also release the k8s-helm-example chart, so we can use it as dependency in some other 
-Helm charts.
+For Catena-X open-source applications, we decided to use [Helm](http://helm.sh/) as package manager for releases and 
+deployments. This example repository contains a chart named *[k8s-helm-example](charts/k8s-helm-example)* to describe 
+the deployment of our example application. We also release the k8s-helm-example chart, so we can use it as dependency 
+in some other Helm charts.
 
 Furthermore, we are using the Helm chart to deploy our example application via 
 [Argo CD](https://argo-cd.readthedocs.io/en/stable/) to multiple [kubernetes clusters](http://kubernetes.io/).
-We achieve this, by providing multiple cluster/environment specific `value-<env>.yaml` file with our Helm chart.
-You can find out more about Catena-X Helm best practices [in our public documentation](https://catenax-ng.github.io/docs/kubernetes-basics/helm).
+We achieve this, by providing multiple cluster/environment specific `value-<env>.yaml` file with our Helm chart. You 
+can find out more about Catena-X Helm best practices [in our public documentation](https://catenax-ng.github.io/docs/kubernetes-basics/helm).
 
 # Argo CD
 
