@@ -1,11 +1,11 @@
-name: commit linting
+name: check for conventional commits
 
 on: 
   pull_request:
 
 jobs:
-  commit-lint:
-    name: commit linting
+  commit-lint-on-pr:
+    name: check linting
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
