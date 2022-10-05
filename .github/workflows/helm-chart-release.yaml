@@ -2,6 +2,9 @@ name: Release Charts
 
 on:
   push:
+    # prevent unnecessary GH action runs for files outside of charts folder
+    paths:
+      - 'charts/**'
     branches:
       - main
 
