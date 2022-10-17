@@ -9,7 +9,7 @@ This [repository](https://github.com/catenax-ng/k8s-example-argo-cd-project) is 
 ## Conventional commits via pre-commit hook
 
 Conventional commits are prepared for this repository but require manual steps after you have cloned this repository 
-locally to your computer. The following is a possible solution based on node.js/npm. If you don't want to use that specific solution, there are several other toolings (based on go, python, php, bash, etc) listed [here](https://www.conventionalcommits.org/en/about/).  
+locally to your computer. The following is a possible solution based on node.js/npm. If you don't want to use that specific solution, there are several other toolings (based on go, python, php, bash, etc) listed [here](https://www.conventionalcommits.org/en/about/#tooling-for-conventional-commits).  
 
 **Prerequisites to use conventional commits:**
 
