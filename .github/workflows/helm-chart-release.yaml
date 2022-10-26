@@ -17,9 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
       - name: Configure Git
         run: |
@@ -29,9 +27,33 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
-          version: v3.8.1
+          version: v3.10.0
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.4.0
+        uses: helm/chart-releaser-action@v1.4.1
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+  dispatch_helm_repo_update:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v2
+        with:
+          application_id: ${{ secrets.ORG_REPO_DISPATCH_APPID }}
+          application_private_key: ${{ secrets.ORG_REPO_DISPATCH_KEY }}
+
+      - name: Trigger workflow
+        id: call_action
+        env:
+          TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+        run: |
+          curl -v \
+            --request POST \
+            --url https://api.github.com/repos/catenax-ng/catenax-ng.github.io/actions/workflows/helm-build-repo-index.yaml/dispatches \
+            --header "authorization: Bearer $TOKEN" \
+            --header "Accept: application/vnd.github.v3+json" \
+            --data '{"ref":"main", "inputs": { "github_repo":"${{ github.repository }}" }}' \
+            --fail
