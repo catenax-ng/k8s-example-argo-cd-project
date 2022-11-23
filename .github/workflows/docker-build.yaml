@@ -1,59 +1,58 @@
-name: Build Pipeline
+name: Build - Docker image (SemVer)
 
 on:
   push:
     branches:
-      - 'main'
+      - master
+      - main
+    # trigger events for SemVer like tags
+    tags:
+      - 'v*.*.*'
+      - 'v*.*.*-*'
+  pull_request:
+    branches:
+      - master
+      - main
+
 env:
-  # Use docker.io for Docker Hub if empty
+  # Use GH Container Registry instead of docker
+  # github.repository equals to <account|org>/<repo>
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   docker:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
       packages: write
-      # This is used to complete the identity challenge
-      # with sigstore/fulcio when running outside of PRs.
-      id-token: write
-    steps:
 
+    steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Install the cosign tool except on PR
-      # https://github.com/sigstore/cosign-installer
-      - name: Install cosign
-        if: github.event_name != 'pull_request'
-        uses: sigstore/cosign-installer@main
+      # Create SemVer or ref tags dependent of trigger event
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}
+            type=semver,pattern={{major}}.{{minor}}
 
-      # Login against a Docker registry except on PR
-      # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set application version
-        id: app_version
-        run: echo "::set-output name=prefix::$(date +'%Y-%m-%d').${{ github.run_number }}."
-
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
-      - name: Generate docker image tags and labels
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
-      - name: Build and push Docker image
-        id: build-and-push
+      - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
