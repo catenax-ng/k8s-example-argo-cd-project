@@ -1,13 +1,11 @@
-name: Release Charts
+name: Release - Helm Charts
 
 on:
   push:
-    # prevent unnecessary GH action runs for files outside of charts folder
     paths:
       - 'charts/**'
     branches:
       - main
-
 jobs:
   release:
     # depending on default permission settings for your org (contents being read-only or read-write for workloads), you will have to add permissions
@@ -15,9 +13,13 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
+
     steps:
+      # fetch-depth: 0 is required to determine differences in chart(s)
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Configure Git
         run: |
