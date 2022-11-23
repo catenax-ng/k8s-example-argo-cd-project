@@ -3,7 +3,6 @@ name: Build - Docker image (SemVer)
 on:
   push:
     branches:
-      - master
       - main
     # trigger events for SemVer like tags
     tags:
