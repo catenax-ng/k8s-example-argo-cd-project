@@ -46,6 +46,8 @@ jobs:
           # GITHUB_TOKEN enables this github action to access github API and post comments in a pull request
           # token: ${{ secrets.GITHUB_TOKEN }}
           # enable_comments: true
+          exclude_results: ""
+          exclude_severities: "info,low"
 
       # Upload findings to GitHub Advanced Security Dashboard
       - name: Upload SARIF file for GitHub Advanced Security Dashboard
