@@ -1,0 +1,21 @@
+name: check for conventional commits
+
+on: 
+  pull_request:
+
+jobs:
+  commit-lint-on-pr:
+    name: check linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: npm
+      - name: install commitlint
+        run: npm install --save-dev @commitlint/{cli,config-conventional}
+      - name: lint commit messages
+        run: npx commitlint --from HEAD~1 --verbose

@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/catenax-ng/k8s-helm-example
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "main"
+  tag: "1.23.2"
 
 imagePullSecrets: []
 nameOverride: "k8s-helm-example"
@@ -18,7 +18,7 @@ podAnnotations: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
-  
+
 # Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
 securityContext:
@@ -33,7 +33,7 @@ service:
 
 autoscaling:
   enabled: false
-  
+
 ingress:
   enabled: true
   annotations:
@@ -46,14 +46,14 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls: 
+  tls:
     - secretName: tls-secret
       hosts:
         - home.int.demo.catena-x.net
 
 # Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits
-resources: 
+resources:
   limits:
     cpu: 500m
     memory: 128Mi
@@ -78,15 +78,15 @@ tolerations: []
 # Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 affinity:
-  podAntiAffinity: 
-    preferredDuringSchedulingIgnoredDuringExecution: 
-    - weight: 100
-      podAffinityTerm:
-        labelSelector:
-          matchExpressions:
-          - key: app.kubernetes.io/name 
-            operator: DoesNotExist           
-        topologyKey: kubernetes.io/hostname
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: DoesNotExist
+          topologyKey: kubernetes.io/hostname
 
 # Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://github.com/helm/charts/blob/master/stable/nginx-ingress/values.yaml#L210
