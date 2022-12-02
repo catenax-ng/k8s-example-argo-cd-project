@@ -1,7 +1,7 @@
 apiVersion: v2
 type: application
 name: k8s-helm-example
-version: 0.1.5
+version: 0.1.6
 appVersion: "1.23.2"
 description: A Helm chart for Kubernetes for Catena-X
 home: https://github.com/catenax-ng/k8s-helm-example
