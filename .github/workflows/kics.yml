@@ -41,6 +41,7 @@ jobs:
           # - results-dir/results.sarif
           output_path: kicsResults/
           output_formats: "json,sarif"
+          #2555bc687f5f7b2b449e9be8d558bb1f8ea541899dea15df39b6dc66ccfda9ed: Base image uses an unpreviled user, no need to define a user in Dockerfile
           exclude_results: "2555bc687f5f7b2b449e9be8d558bb1f8ea541899dea15df39b6dc66ccfda9ed"
 
       # Upload findings to GitHub Advanced Security Dashboard
