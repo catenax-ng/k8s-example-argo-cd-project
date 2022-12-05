@@ -1,2 +1,2 @@
-# We use a base image that uses an unpreviled user. Therefore, we do not define a user in our Dockerfile.
+# Base image uses an unpreviled user, no need to define a user in Dockerfile
 AVD-DS-0002
