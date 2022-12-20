@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "k8s-default-backend.fullname" . }}
+  name: {{ include "k8s-helm-example.fullname" . }}
   labels:
-    {{- include "k8s-default-backend.labels" . | nindent 4 }}
+    {{- include "k8s-helm-example.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "k8s-default-backend.selectorLabels" . | nindent 4 }}
+    {{- include "k8s-helm-example.selectorLabels" . | nindent 4 }}
