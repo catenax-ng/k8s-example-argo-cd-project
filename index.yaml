@@ -3,6 +3,22 @@ entries:
   k8s-default-backend:
   - apiVersion: v2
     appVersion: 1.23.2
+    created: "2022-12-20T17:08:11.395305782Z"
+    description: Ingress default backend for Catena-X
+    digest: 0fe5672de5a1db319eafe927a1035d57e8bd8fc2d6f7e7bc24db4348c9f87081
+    home: https://github.com/catenax-ng/k8s-helm-example
+    maintainers:
+    - email: devsecops@catena-x.net
+      name: Catena-X System Team
+    name: k8s-default-backend
+    sources:
+    - https://github.com/catenax-ng/k8s-helm-example
+    type: application
+    urls:
+    - https://github.com/catenax-ng/k8s-helm-example/releases/download/k8s-default-backend-0.1.0-rc2/k8s-default-backend-0.1.0-rc2.tgz
+    version: 0.1.0-rc2
+  - apiVersion: v2
+    appVersion: 1.23.2
     created: "2022-12-20T13:24:22.099094182Z"
     description: Ingress default backend for Catena-X
     digest: 79b3b9195794422ae83fe4c4997a33ceb915bf7c83600dde379c1448004a114e
@@ -70,4 +86,4 @@ entries:
     urls:
     - https://github.com/catenax-ng/k8s-helm-example/releases/download/k8s-helm-example-0.1.1/k8s-helm-example-0.1.1.tgz
     version: 0.1.1
-generated: "2022-12-20T13:24:22.099110482Z"
+generated: "2022-12-20T17:08:11.395322283Z"
