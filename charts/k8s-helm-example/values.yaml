@@ -1,4 +1,4 @@
-# Default values for k8s-helm-example.
+# Default values for k8s-default-backend.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -11,8 +11,8 @@ image:
   tag: "1.23.2"
 
 imagePullSecrets: []
-nameOverride: "k8s-helm-example"
-fullnameOverride: "k8s-helm-example"
+nameOverride: "k8s-default-backend"
+fullnameOverride: "k8s-default-backend"
 
 podAnnotations: {}
 
@@ -28,6 +28,7 @@ securityContext:
   runAsGroup: 3000
 
 service:
+  environment: ""
   type: ClusterIP
   port: 8080
 
