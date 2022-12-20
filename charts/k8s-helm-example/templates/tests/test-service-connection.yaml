@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "k8s-helm-example.fullname" . }}-test-connection"
+  name: "{{ include "k8s-default-backend.fullname" . }}-test-connection"
   labels:
-    {{- include "k8s-helm-example.labels" . | nindent 4 }}
+    {{- include "k8s-default-backend.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "k8s-helm-example.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "k8s-default-backend.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
