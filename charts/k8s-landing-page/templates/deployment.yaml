@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "k8s-default-backend.fullname" . }}
+  name: {{ include "k8s-landing-page.fullname" . }}
   labels:
-    {{- include "k8s-default-backend.labels" . | nindent 4 }}
+    {{- include "k8s-landing-page.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "k8s-default-backend.selectorLabels" . | nindent 6 }}
+      {{- include "k8s-landing-page.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "k8s-default-backend.selectorLabels" . | nindent 8 }}
+        {{- include "k8s-landing-page.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
