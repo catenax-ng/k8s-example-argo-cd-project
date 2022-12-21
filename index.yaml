@@ -86,4 +86,22 @@ entries:
     urls:
     - https://github.com/catenax-ng/k8s-helm-example/releases/download/k8s-helm-example-0.1.1/k8s-helm-example-0.1.1.tgz
     version: 0.1.1
-generated: "2022-12-20T17:08:11.395322283Z"
+  k8s-landing-page:
+  - apiVersion: v2
+    appVersion: 1.23.2
+    created: "2022-12-21T15:21:23.297528482Z"
+    description: Default landing page for Catenax-NG Environments
+    digest: 608240a90150bf6bf142b1f443bd46fbf9d461ecca265054f25b7d6f2cad3dee
+    home: https://github.com/catenax-ng/k8s-helm-example
+    maintainers:
+    - email: devsecops@catena-x.net
+      name: Catena-X System Team
+      url: https://github.com/catenax-ng/k8s-helm-example
+    name: k8s-landing-page
+    sources:
+    - https://github.com/catenax-ng/k8s-helm-example
+    type: application
+    urls:
+    - https://github.com/catenax-ng/k8s-helm-example/releases/download/k8s-landing-page-0.1.0/k8s-landing-page-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-12-21T15:21:23.297545182Z"
