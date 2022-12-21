@@ -1,12 +1,13 @@
 apiVersion: v2
 type: application
-name: k8s-default-backend
-version: 0.1.0-rc2
+name: k8s-landing-page
+version: 0.1.0
 appVersion: "1.23.2"
-description: Ingress default backend for Catena-X
+description: Default landing page for Catenax-NG Environments
 home: https://github.com/catenax-ng/k8s-helm-example
 sources:
   - https://github.com/catenax-ng/k8s-helm-example
 maintainers:
   - name: Catena-X System Team
     email: devsecops@catena-x.net
+    url: https://github.com/catenax-ng/k8s-helm-example
