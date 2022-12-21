@@ -1,8 +1,8 @@
-# k8s-default-backend
+# k8s-landing-page
 
-![Version: 0.1.0-rc2](https://img.shields.io/badge/Version-0.1.0--rc2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.23.2](https://img.shields.io/badge/AppVersion-1.23.2-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.23.2](https://img.shields.io/badge/AppVersion-1.23.2-informational?style=flat-square)
 
-Ingress default backend for Catena-X
+Default landing page for Catenax-NG Environments
 
 **Homepage:** <https://github.com/catenax-ng/k8s-helm-example>
 
@@ -20,8 +20,8 @@ Ingress default backend for Catena-X
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| nameOverride | string | `"k8s-default-backend"` |  |
-| fullnameOverride | string | `"k8s-default-backend"` |  |
+| nameOverride | string | `"k8s-landing-page"` |  |
+| fullnameOverride | string | `"k8s-landing-page"` |  |
 | image.repository | string | `"ghcr.io/catenax-ng/k8s-helm-example"` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
