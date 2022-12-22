@@ -41,7 +41,7 @@
             <a class="nav-link" href="https://catenax-ng.github.io/blog" target="_blank">News</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://github.com/catenax-ng/catenax-ng.github.io" target="_blank">GitHub</a>
+            <a class="nav-link" href="https://github.com/catenax-ng" target="_blank">GitHub</a>
           </li>
         </ul>
       </div>
@@ -54,7 +54,7 @@
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4" style="background-color: rgb(255, 166, 0);">
       <h1 class="display-3">Welcome to Catena-X <br /> <b id="htmlEnvironment">INT</b> Cluster!</h1>
-      <p class="lead">In this cluster you can test your products and services provided by Catena-X DevSecOps team(for Catena-X members only). Here you can find the services provided and their addresses.</p>
+      <p class="lead">In this cluster you can test your products and services provided by Catena-X System Team (for Catena-X members only). Here you can find the services provided and their addresses.</p>
       <a id="argoCDLink" href="https://argo.int.demo.catena-x.net/" class="btn btn-primary btn-lg">Jump directly to ArgoCD</a>
     </header>
 
@@ -125,9 +125,7 @@
 
   <!-- Footer -->
   <footer class="py-5 bg-dark fixed-bottom">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; 2022 Catena-X DevSecOps - funded by <a href="https://www.bmwk.de/Navigation/EN/Home/home.html">BMWK</a></p>
-    </div>
+    <div id="copyright" class="container"></div>
     <!-- /.container -->
   </footer>
 
@@ -140,11 +138,18 @@
     $(document).ready(function() {
       $.getJSON('config.json', function(data) {
         $("#htmlEnvironment").html(data.serviceEnvironment);
-        document.title = 'Catena-X ' + data.serviceEnvironment + ' platform stack';
+        document.title = 'Catena-X ' + data.serviceEnvironment.toUpperCase() + ' platform stack';
         $("#argoCDLink").attr("href", "https://argo." + data.serviceEnvironment + ".demo.catena-x.net/");
         $("#grafanaLink").attr("href", "https://grafana." + data.serviceEnvironment + ".demo.catena-x.net/");
       });
     });
+    const paragraph = `
+      <p class="m-0 small text-center text-white">
+        Copyright &copy; ${new Date().getFullYear()} System Team Catena-X - funded by <a href="https://www.bmwk.de/Navigation/EN/Home/home.html">BMWK</a>
+      </p>
+    `;
+
+    document.getElementById('copyright').innerHTML = paragraph;
   </script>
 
 </body>
