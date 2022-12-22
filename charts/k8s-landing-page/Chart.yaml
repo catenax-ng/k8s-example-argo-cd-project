@@ -1,8 +1,8 @@
 apiVersion: v2
 type: application
 name: k8s-landing-page
-version: 0.1.0
-appVersion: "1.23.2"
+version: 0.1.1
+appVersion: "1.23.3"
 description: Default landing page for Catenax-NG Environments
 home: https://github.com/catenax-ng/k8s-helm-example
 sources:
