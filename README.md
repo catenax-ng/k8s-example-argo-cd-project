@@ -121,7 +121,7 @@ to:
    This file is needed to use GitHub pages as download source for the released chart.
 
 You can use the workflow 'as-is', if you placed your charts in the [/charts](charts) directory and have a branch called 
-`gh-pages`. You can read more about how to release your helm chart [in our public documentation](https://catenax-ng.github.io/docs/guides/how-to-release-a-helm-chart)
+`gh-pages`. You can read more about how to release your helm chart [in our public documentation](https://catenax-ng.github.io/docs/guides/Helm/how-to-release-a-helm-chart)
 
 # Helm Chart
 
@@ -133,7 +133,7 @@ in some other Helm charts.
 Furthermore, we are using the Helm chart to deploy our example application via 
 [Argo CD](https://argo-cd.readthedocs.io/en/stable/) to multiple [kubernetes clusters](http://kubernetes.io/).
 We achieve this, by providing multiple cluster/environment specific `value-<env>.yaml` file with our Helm chart. You 
-can find out more about Catena-X Helm best practices [in our public documentation](https://catenax-ng.github.io/docs/kubernetes-basics/helm).
+can find out more about Catena-X Helm best practices [in our public documentation](https://catenax-ng.github.io/docs/guides/Helm/helmchart).
 
 # Argo CD
 
@@ -170,6 +170,6 @@ A deployed application in Argo CDs web UI could look like the following:
 ![](docs/images/argo-cd-app.png)
 
 You can find out more on how to deploy applications with Argo CD to Catena-X consortia kubernetes clusters
-[in our public documentation](https://catenax-ng.github.io/docs/guides/how-to-deploy-an-application).
-Additional documentation for specific challenges you may face can be found in the 
-[Base guides section](https://catenax-ng.github.io/docs/guides)
+[in our public documentation](https://catenax-ng.github.io/docs/guides/ArgoCD/how-to-deploy-an-application).
+Additional documentation for specific challenges you may face can be found in our public documentation under the 
+[Base guides section](https://catenax-ng.github.io/docs/guides/ArgoCD/ArgoCDbasics).
